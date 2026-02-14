@@ -1057,54 +1057,159 @@ header h1 {
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
-/* Декорации - ФИКСИРОВАННЫЕ В УГЛАХ */
+/* ПРАВИЛЬНЫЕ РАЗМЕРЫ ПО СКРИНШОТУ */
+
+/* Боковые панели - ОГРОМНЫЕ МИНИАТЮРЫ */
+.sidebar {
+    width: 280px !important;  /* Ещё шире! */
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: sticky;
+    top: 80px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--pink-accent) transparent;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: var(--pink-accent);
+    border-radius: 3px;
+}
+
+.sidebar-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    color: var(--pink-accent);
+    text-align: center;
+    padding: 12px;
+    border-bottom: 2px solid var(--border-color);
+    text-shadow: 0 0 10px var(--pink-glow);
+}
+
+.thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.thumbnail {
+    width: 100%;
+    height: 400px !important;  /* ОГРОМНЫЕ! */
+    background: var(--card-bg);
+    border: 3px solid var(--border-color) !important;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s;
+    opacity: 1 !important;
+}
+
+.thumbnail::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 65%, rgba(15, 15, 17, 0.9) 100%);
+    z-index: 1;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+    opacity: 1 !important;
+    filter: none !important;
+    brightness: 1 !important;
+}
+
+.thumbnail:hover {
+    border-color: var(--pink-accent) !important;
+    box-shadow: 0 0 30px rgba(255, 107, 157, 0.7) !important;
+    transform: translateY(-5px) scale(1.02) !important;
+}
+
+.thumbnail:hover img {
+    transform: scale(1.05) !important;
+}
+
+.thumbnail-name {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.95rem !important;
+    letter-spacing: 1.5px;
+    color: var(--text-primary);
+    z-index: 2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+}
+
+/* Декорации - МАЛЕНЬКИЕ В УГЛАХ */
 .side-decoration {
-    position: fixed;
-    z-index: 0;
-    opacity: 1;  /* Всегда яркие! */
-    pointer-events: none;
+    position: fixed !important;
+    z-index: 0 !important;
+    opacity: 0.8 !important;
+    pointer-events: none !important;
     transition: opacity 0.3s;
 }
 
 .left-decoration {
-    bottom: 0;
-    left: 0;
-    width: 180px;
-    height: 250px;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 150px !important;  /* Маленькие! */
+    height: 200px !important;
 }
 
 .right-decoration {
-    top: 80px;
-    right: 0;
-    width: 180px;
-    height: 250px;
+    top: 70px !important;
+    right: 0 !important;
+    width: 150px !important;  /* Маленькие! */
+    height: 200px !important;
 }
 
 .side-decoration:hover {
-    opacity: 1;  /* Не меняются! */
-}
-
-.side-decoration img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 0 20px rgba(255, 107, 157, 0.4));
     opacity: 1 !important;
 }
 
-/* Кнопки декораций - ВИДИМЫЕ И КЛИКАБЕЛЬНЫЕ */
+.side-decoration img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    filter: drop-shadow(0 0 15px rgba(255, 107, 157, 0.4)) !important;
+    opacity: 1 !important;
+}
+
+/* Кнопки декораций - рядом с углами */
 .edit-decor-btn {
     position: fixed !important;
     font-family: 'Russo One', sans-serif !important;
-    font-size: 0.8rem !important;
+    font-size: 0.75rem !important;
     letter-spacing: 1px !important;
-    padding: 10px 16px !important;
+    padding: 8px 14px !important;
     background: var(--pink-accent) !important;
     color: var(--darker-bg) !important;
     border: 2px solid var(--pink-accent) !important;
     cursor: pointer !important;
     white-space: nowrap !important;
-    z-index: 9999 !important;
+    z-index: 10000 !important;
     pointer-events: auto !important;
     box-shadow: 0 4px 15px rgba(255, 107, 157, 0.6) !important;
     transition: all 0.3s !important;
@@ -1112,17 +1217,28 @@ header h1 {
 }
 
 .edit-decor-left {
-    bottom: 15px !important;
-    left: 15px !important;
+    bottom: 10px !important;
+    left: 160px !important;  /* Рядом с лисичкой */
 }
 
 .edit-decor-right {
-    top: 90px !important;
-    right: 15px !important;
+    top: 280px !important;  /* Под тигром */
+    right: 10px !important;
 }
 
 .edit-decor-btn:hover {
     background: var(--pink-glow) !important;
-    transform: scale(1.05) !important;
+    transform: scale(1.08) !important;
     box-shadow: 0 6px 25px rgba(255, 107, 157, 0.9) !important;
+}
+
+/* Основной layout - больше места по бокам */
+.main-layout {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px !important;  /* Больше расстояние */
+    padding-top: 80px;
+    position: relative;
+    z-index: 1;
 }
