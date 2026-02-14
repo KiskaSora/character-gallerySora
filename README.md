@@ -1,2 +1,0 @@
-# character-gallerySora
-lzlzl
