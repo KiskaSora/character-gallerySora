@@ -920,3 +920,37 @@ header h1 {
         padding: 30px 20px;
     }
 }
+/* БЫСТРЫЙ ФИКС - добавь это В САМЫЙ КОНЕЦ style.css */
+
+.edit-decor-btn {
+    position: fixed !important;
+    font-family: 'Russo One', sans-serif !important;
+    font-size: 0.85rem !important;
+    letter-spacing: 1px !important;
+    padding: 12px 18px !important;
+    background: var(--pink-accent) !important;
+    color: var(--darker-bg) !important;
+    border: 2px solid var(--pink-accent) !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+    box-shadow: 0 4px 15px rgba(255, 107, 157, 0.6) !important;
+    transition: all 0.3s !important;
+}
+
+.edit-decor-left {
+    bottom: 30px !important;
+    left: 15px !important;
+}
+
+.edit-decor-right {
+    bottom: 30px !important;
+    right: 15px !important;
+}
+
+.edit-decor-btn:hover {
+    background: var(--pink-glow) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 6px 25px rgba(255, 107, 157, 0.8) !important;
+}
