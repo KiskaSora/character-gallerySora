@@ -1,0 +1,417 @@
+/* Японский пастельный дизайн */
+:root {
+    --coral-pink: #FF9B9B;
+    --soft-pink: #FFD6D6;
+    --lavender: #E8D4F2;
+    --soft-blue: #C8D8E4;
+    --peach: #FFCAB1;
+    --light-bg: #F5F5F7;
+    --dark-text: #4A4A4A;
+    --overlay-bg: rgba(255, 155, 155, 0.95);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Bebas Neue', sans-serif;
+    background: linear-gradient(135deg, var(--soft-pink) 0%, var(--lavender) 50%, var(--soft-blue) 100%);
+    min-height: 100vh;
+    color: var(--dark-text);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Анимация падающих лепестков сакуры */
+.sakura-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.sakura-petal {
+    position: absolute;
+    top: -10px;
+    width: 15px;
+    height: 15px;
+    background: var(--coral-pink);
+    opacity: 0.7;
+    animation: fall linear infinite;
+    clip-path: polygon(50% 0%, 80% 20%, 100% 50%, 80% 80%, 50% 100%, 20% 80%, 0% 50%, 20% 20%);
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-10px) rotate(0deg);
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+/* Кнопка открытия админки */
+.admin-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    padding: 12px 24px;
+    background: var(--coral-pink);
+    color: #FFF;
+    border: none;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.admin-toggle:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.3);
+}
+
+/* Админ панель */
+.admin-panel {
+    position: fixed;
+    top: 0;
+    right: -500px;
+    width: 450px;
+    height: 100vh;
+    background: #FFF;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    transition: right 0.4s ease;
+    overflow-y: auto;
+}
+
+.admin-panel.active {
+    right: 0;
+}
+
+.admin-content {
+    padding: 30px;
+}
+
+.admin-content h2 {
+    font-size: 36px;
+    color: var(--coral-pink);
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+
+.admin-content h3 {
+    font-size: 24px;
+    color: var(--dark-text);
+    margin: 30px 0 15px;
+    letter-spacing: 1px;
+}
+
+.close-admin {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 32px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--dark-text);
+    transition: color 0.3s ease;
+}
+
+.close-admin:hover {
+    color: var(--coral-pink);
+}
+
+/* Форма */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: var(--dark-text);
+    letter-spacing: 1px;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--soft-pink);
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--coral-pink);
+}
+
+.form-group input[type="file"] {
+    font-size: 14px;
+    padding: 8px;
+}
+
+.preview-container {
+    margin-top: 15px;
+    max-width: 100%;
+}
+
+.image-preview {
+    max-width: 100%;
+    height: auto;
+    border: 3px solid var(--soft-pink);
+    display: none;
+}
+
+.image-preview.active {
+    display: block;
+}
+
+.submit-btn {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 2px;
+    padding: 14px 0;
+    width: 100%;
+    background: var(--coral-pink);
+    color: #FFF;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.3);
+}
+
+.danger-btn {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    padding: 12px 24px;
+    background: #FF6B6B;
+    color: #FFF;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+.danger-btn:hover {
+    background: #FF5252;
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.3);
+}
+
+.delete-section {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid var(--soft-pink);
+}
+
+/* Хедер */
+header {
+    text-align: center;
+    padding: 60px 20px 40px;
+    position: relative;
+    z-index: 2;
+}
+
+.main-title {
+    font-size: 72px;
+    letter-spacing: 4px;
+    color: #FFF;
+    text-shadow: 3px 3px 0px var(--coral-pink), 
+                 6px 6px 0px var(--peach);
+    margin-bottom: 20px;
+}
+
+.header-line {
+    width: 200px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--coral-pink), var(--peach));
+    margin: 0 auto;
+}
+
+/* Галерея */
+main {
+    position: relative;
+    z-index: 2;
+}
+
+.gallery-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+/* Карточки персонажей */
+.character-card {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border: 4px solid #FFF;
+    box-shadow: 8px 8px 0px rgba(255, 155, 155, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    background: #FFF;
+}
+
+.character-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0px rgba(255, 155, 155, 0.6);
+}
+
+.character-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Overlay с информацией */
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--overlay-bg);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.character-card:hover .card-overlay {
+    opacity: 1;
+}
+
+.overlay-content {
+    text-align: center;
+    color: #FFF;
+}
+
+.character-name {
+    font-size: 42px;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.character-desc {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    opacity: 0.95;
+}
+
+/* Кнопка скачивания */
+.download-btn {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    letter-spacing: 2px;
+    padding: 12px 30px;
+    background: #FFF;
+    color: var(--coral-pink);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.2);
+}
+
+.download-btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.3);
+}
+
+.download-btn:active {
+    transform: translate(0, 0);
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.2);
+}
+
+.download-btn span {
+    display: inline-block;
+    margin-right: 8px;
+}
+
+/* Индикатор загрузки */
+.loading {
+    text-align: center;
+    padding: 20px;
+    font-size: 24px;
+    color: var(--coral-pink);
+    letter-spacing: 2px;
+    display: none;
+}
+
+.loading.active {
+    display: block;
+}
+
+/* Футер */
+footer {
+    text-align: center;
+    padding: 30px;
+    color: #FFF;
+    font-size: 20px;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Адаптив для мобильных */
+@media (max-width: 768px) {
+    .admin-panel {
+        width: 100%;
+        right: -100%;
+    }
+
+    .main-title {
+        font-size: 48px;
+    }
+
+    .gallery-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .character-name {
+        font-size: 32px;
+    }
+
+    .character-desc {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 36px;
+    }
+
+    .gallery-container {
+        grid-template-columns: 1fr;
+    }
+}
