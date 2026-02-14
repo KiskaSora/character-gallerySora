@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея Персонажей</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;600;700&family=Russo+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="sakura-canvas"></canvas>
+
+    <!-- Кнопка редактирования -->
+    <button class="edit-mode-btn" id="edit-mode-btn">✎ РЕДАКТИРОВАТЬ</button>
+
+    <div class="container">
+        <header>
+            <h1>ГАЛЕРЕЯ ПЕРСОНАЖЕЙ</h1>
+            <div class="header-line"></div>
+        </header>
+
+        <div class="card-stack" id="card-stack">
+            <!-- Карточки будут генерироваться динамически -->
+        </div>
+
+        <div class="navigation">
+            <button class="nav-btn" id="prev-btn">← НАЗАД</button>
+            <span class="card-counter"><span id="current">1</span> / <span id="total">0</span></span>
+            <button class="nav-btn" id="next-btn">ВПЕРЁД →</button>
+        </div>
+
+        <!-- Кнопка добавления -->
+        <button class="add-card-btn" id="add-card-btn" style="display: none;">
+            + ДОБАВИТЬ ПЕРСОНАЖА
+        </button>
+    </div>
+
+    <!-- Уведомление о копировании -->
+    <div class="notification" id="copy-notification">
+        ✓ СКОПИРОВАНО!
+    </div>
+
+    <!-- Модальное окно редактирования -->
+    <div class="modal" id="edit-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-modal">×</span>
+            <h2 class="modal-title">РЕДАКТИРОВАНИЕ</h2>
+            <div class="divider"></div>
+
+            <form id="edit-form">
+                <div class="form-group">
+                    <label>ИЗОБРАЖЕНИЕ</label>
+                    <div class="image-upload">
+                        <img id="preview-image" src="" alt="Превью">
+                        <input type="file" id="image-input" accept="image/*">
+                        <label for="image-input" class="upload-label">ВЫБРАТЬ ФОТО</label>
+                        <div class="image-tip">Рекомендуется: 450x600px или соотношение 3:4</div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>ИМЯ ПЕРСОНАЖА</label>
+                    <input type="text" id="char-name" placeholder="Введи имя...">
+                </div>
+
+                <div class="form-group">
+                    <label>ОПИСАНИЕ ХАРАКТЕРА</label>
+                    <textarea id="char-description" rows="5" placeholder="Опиши характер, историю, особенности персонажа..."></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>ВОЗРАСТ</label>
+                        <input type="text" id="char-age" placeholder="23">
+                    </div>
+
+                    <div class="form-group">
+                        <label>РОЛЬ/КЛАСС</label>
+                        <input type="text" id="char-role" placeholder="Маг">
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="save-btn">СОХРАНИТЬ</button>
+                    <button type="button" class="delete-btn" id="delete-btn">УДАЛИТЬ</button>
+                    <button type="button" class="cancel-btn" id="cancel-btn">ОТМЕНА</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
