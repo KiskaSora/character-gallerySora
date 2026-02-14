@@ -34,17 +34,20 @@
     <!-- Декоративные элементы по бокам -->
     <div class="side-decoration left-decoration" id="left-decoration">
         <img id="left-decor-img" src="" alt="" style="display: none;">
-        <button class="edit-decor-btn" id="edit-left-decor" style="display: none;">
-            📷 ИЗМЕНИТЬ PNG
-        </button>
     </div>
 
     <div class="side-decoration right-decoration" id="right-decoration">
         <img id="right-decor-img" src="" alt="" style="display: none;">
-        <button class="edit-decor-btn" id="edit-right-decor" style="display: none;">
-            📷 ИЗМЕНИТЬ PNG
-        </button>
     </div>
+
+    <!-- КНОПКИ ДЕКОРАЦИЙ - ОТДЕЛЬНО ОТ КОНТЕЙНЕРОВ! -->
+    <button class="edit-decor-btn edit-decor-left" id="edit-left-decor" style="display: none;">
+        📷 ЛЕВАЯ PNG
+    </button>
+
+    <button class="edit-decor-btn edit-decor-right" id="edit-right-decor" style="display: none;">
+        📷 ПРАВАЯ PNG
+    </button>
 
     <!-- Скрытые инпуты для загрузки декораций -->
     <input type="file" id="left-decor-input" accept="image/png,image/jpg,image/jpeg,image/gif,image/webp" style="display: none;">
