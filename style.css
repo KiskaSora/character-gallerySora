@@ -104,18 +104,20 @@ body {
     text-shadow: 0 0 10px var(--pink-glow);
 }
 
-/* Декоративные элементы по бокам */
+/* Декоративные элементы по бокам - ИСПРАВЛЕНО */
 .side-decoration {
     position: fixed;
     top: 60px;
     bottom: 0;
     width: 150px;
-    z-index: 0;
+    z-index: 500;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     opacity: 0.6;
     transition: opacity 0.3s;
+    pointer-events: none;
 }
 
 .side-decoration:hover {
@@ -136,28 +138,40 @@ body {
     max-height: 80%;
     object-fit: contain;
     filter: drop-shadow(0 0 15px rgba(255, 107, 157, 0.3));
+    pointer-events: none;
 }
 
 .edit-decor-btn {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    position: fixed;
     font-family: 'Russo One', sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     letter-spacing: 1px;
-    padding: 8px 12px;
-    background: var(--card-bg);
-    color: var(--pink-accent);
+    padding: 10px 15px;
+    background: var(--pink-accent);
+    color: var(--darker-bg);
     border: 2px solid var(--pink-accent);
     cursor: pointer;
     transition: all 0.3s;
     white-space: nowrap;
+    z-index: 1002;
+    pointer-events: auto;
+    box-shadow: 0 4px 15px rgba(255, 107, 157, 0.6);
+}
+
+#edit-left-decor {
+    bottom: 30px;
+    left: 15px;
+}
+
+#edit-right-decor {
+    bottom: 30px;
+    right: 15px;
 }
 
 .edit-decor-btn:hover {
-    background: var(--pink-accent);
-    color: var(--darker-bg);
+    background: var(--pink-glow);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(255, 107, 157, 0.8);
 }
 
 /* Основной layout */
@@ -851,6 +865,10 @@ header h1 {
 
     .side-decoration {
         display: none;
+    }
+
+    .edit-decor-btn {
+        display: none !important;
     }
 
     .main-layout {
