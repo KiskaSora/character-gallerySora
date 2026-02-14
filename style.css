@@ -954,3 +954,175 @@ header h1 {
     transform: translateY(-3px) !important;
     box-shadow: 0 6px 25px rgba(255, 107, 157, 0.8) !important;
 }
+
+/* Боковые панели с миниатюрами - УЛУЧШЕННЫЕ */
+.sidebar {
+    width: 220px;  /* Было 180px, теперь шире */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: sticky;
+    top: 80px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--pink-accent) transparent;
+}
+
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: var(--pink-accent);
+    border-radius: 3px;
+}
+
+.sidebar-title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: var(--pink-accent);
+    text-align: center;
+    padding: 12px;
+    border-bottom: 2px solid var(--border-color);
+    text-shadow: 0 0 10px var(--pink-glow);
+}
+
+.thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.thumbnail {
+    width: 100%;
+    height: 320px;  /* Было 240px, теперь выше! */
+    background: var(--card-bg);
+    border: 2px solid var(--border-color);
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s;
+    opacity: 1;  /* Всегда яркие! */
+}
+
+.thumbnail::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, transparent 70%, rgba(15, 15, 17, 0.85) 100%);
+    z-index: 1;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+    opacity: 1 !important;  /* Не блёкнут! */
+    filter: none !important;  /* Без затемнения! */
+}
+
+.thumbnail:hover {
+    border-color: var(--pink-accent);
+    box-shadow: 0 0 25px rgba(255, 107, 157, 0.6);
+    transform: translateY(-5px) scale(1.02);
+}
+
+.thumbnail:hover img {
+    transform: scale(1.08);
+}
+
+.thumbnail-name {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+    z-index: 2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+/* Декорации - ФИКСИРОВАННЫЕ В УГЛАХ */
+.side-decoration {
+    position: fixed;
+    z-index: 0;
+    opacity: 1;  /* Всегда яркие! */
+    pointer-events: none;
+    transition: opacity 0.3s;
+}
+
+.left-decoration {
+    bottom: 0;
+    left: 0;
+    width: 180px;
+    height: 250px;
+}
+
+.right-decoration {
+    top: 80px;
+    right: 0;
+    width: 180px;
+    height: 250px;
+}
+
+.side-decoration:hover {
+    opacity: 1;  /* Не меняются! */
+}
+
+.side-decoration img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(255, 107, 157, 0.4));
+    opacity: 1 !important;
+}
+
+/* Кнопки декораций - ВИДИМЫЕ И КЛИКАБЕЛЬНЫЕ */
+.edit-decor-btn {
+    position: fixed !important;
+    font-family: 'Russo One', sans-serif !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 1px !important;
+    padding: 10px 16px !important;
+    background: var(--pink-accent) !important;
+    color: var(--darker-bg) !important;
+    border: 2px solid var(--pink-accent) !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+    box-shadow: 0 4px 15px rgba(255, 107, 157, 0.6) !important;
+    transition: all 0.3s !important;
+    text-transform: uppercase !important;
+}
+
+.edit-decor-left {
+    bottom: 15px !important;
+    left: 15px !important;
+}
+
+.edit-decor-right {
+    top: 90px !important;
+    right: 15px !important;
+}
+
+.edit-decor-btn:hover {
+    background: var(--pink-glow) !important;
+    transform: scale(1.05) !important;
+    box-shadow: 0 6px 25px rgba(255, 107, 157, 0.9) !important;
+}
